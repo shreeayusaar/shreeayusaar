@@ -1,0 +1,420 @@
+/* ==========================================================================
+   Shree Ayusaar Ayurveda - Launch Template Stylesheet
+   Theme: Authentic Ayurvedic Luxury & Holistic Wellness
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Google Fonts Import & Global Reset
+   -------------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-deep-green: #0a1c13;
+  --bg-emerald-dark: #102a1e;
+  --bg-card: rgba(16, 42, 30, 0.55);
+  --border-glass: rgba(212, 175, 55, 0.2);
+  --border-glass-hover: rgba(212, 175, 55, 0.45);
+
+  --gold-primary: #e5c158;
+  --gold-light: #f7e6a1;
+  --gold-dark: #b89128;
+  --gold-gradient: linear-gradient(135deg, #f7e6a1 0%, #e5c158 50%, #b89128 100%);
+
+  --text-main: #f0f7f3;
+  --text-muted: #a3c2b2;
+  --text-subtle: #799a89;
+
+  --herbal-accent: #2e6f4e;
+  --herbal-glow: rgba(46, 111, 78, 0.35);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--bg-deep-green);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   Background Ambient Elements & Canvas
+   -------------------------------------------------------------------------- */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ambient-glow-1 {
+  position: fixed;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.12) 0%, rgba(10, 28, 19, 0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.ambient-glow-2 {
+  position: fixed;
+  bottom: -20%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, var(--herbal-glow) 0%, rgba(10, 28, 19, 0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+/* --------------------------------------------------------------------------
+   Main Container & Glassmorphism Card
+   -------------------------------------------------------------------------- */
+.page-wrapper {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.launch-card {
+  width: 100%;
+  max-width: 780px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 28px;
+  padding: 3.5rem 3rem;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-smooth);
+  animation: cardFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.launch-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold-gradient);
+  opacity: 0.85;
+}
+
+.launch-card:hover {
+  border-color: var(--border-glass-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Logo Section
+   -------------------------------------------------------------------------- */
+.logo-container {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.logo-container img {
+  max-width: 170px;
+  height: auto;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.logo-container:hover img {
+  transform: scale(1.04);
+  filter: drop-shadow(0 12px 24px rgba(229, 193, 88, 0.25));
+}
+
+/* --------------------------------------------------------------------------
+   Capsule / Badge
+   -------------------------------------------------------------------------- */
+.capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(229, 193, 88, 0.1);
+  border: 1px solid rgba(229, 193, 88, 0.3);
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: background var(--transition-fast);
+}
+
+.capsule::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--gold-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--gold-primary);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   Headings & Content
+   -------------------------------------------------------------------------- */
+h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+h1 span {
+  display: block;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+p.description {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   Pillars / Features Preview Grid
+   -------------------------------------------------------------------------- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.2rem 1rem;
+  transition: all var(--transition-smooth);
+}
+
+.feature-item:hover {
+  background: rgba(229, 193, 88, 0.07);
+  border-color: rgba(229, 193, 88, 0.3);
+  transform: translateY(-3px);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.feature-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Newsletter / Notification Form
+   -------------------------------------------------------------------------- */
+.subscribe-section {
+  max-width: 520px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.subscribe-title {
+  font-size: 0.95rem;
+  color: var(--text-subtle);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 0.6rem;
+  position: relative;
+}
+
+.subscribe-input {
+  flex: 1;
+  background: rgba(10, 28, 19, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50px;
+  padding: 0.85rem 1.4rem;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.subscribe-input::placeholder {
+  color: var(--text-subtle);
+}
+
+.subscribe-input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 15px rgba(229, 193, 88, 0.2);
+}
+
+.subscribe-btn {
+  background: var(--gold-gradient);
+  color: #0a1c13;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  padding: 0.85rem 1.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 15px rgba(229, 193, 88, 0.3);
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 193, 88, 0.45);
+}
+
+.subscribe-btn:active {
+  transform: translateY(0);
+}
+
+.form-message {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  min-height: 1.25rem;
+  transition: opacity 0.3s;
+}
+
+.form-message.success {
+  color: #6ee7b7;
+}
+
+.form-message.error {
+  color: #fca5a5;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+footer {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--text-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+footer p#year {
+  display: inline;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Animations
+   -------------------------------------------------------------------------- */
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 10px var(--gold-primary);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+    box-shadow: 0 0 4px var(--gold-primary);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Design
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .launch-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-btn {
+    width: 100%;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
